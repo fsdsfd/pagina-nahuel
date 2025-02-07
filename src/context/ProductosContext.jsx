@@ -75,6 +75,24 @@ const ProductosProvider = ( { children} ) => {
         }
 
     }
+    const eliminarProducto = async (id)=>{
+        try {
+            const options = {
+                method : 'DELETE'
+            }
+            const urlEliminar = url + id
+            const prods = await helperPeticionesHttp(urlEliminar, options)
+            const dataEliminar = {
+                id : id,
+                producto : prods
+            }
+            const nuevoEstadoProductos = productos.filter(prod => (prod.id !== dataEliminar.id))
+            setProductos(nuevoEstadoProductos)    
+        } catch (error) {
+            console.log('eliminarProducto', error)
+        }
+
+    }
 
 
     const data = {
@@ -82,7 +100,8 @@ const ProductosProvider = ( { children} ) => {
         crearProductoContext,
         actualizarProductoContext,
         productoAEditar,
-        setProductoAEditar
+        setProductoAEditar,
+        eliminarProducto
     }
 
     return <ProductosContext.Provider value={data}>{ children }</ProductosContext.Provider>

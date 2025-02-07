@@ -13,22 +13,21 @@ const Card = ( { producto } ) => {
   }
 
   return (
-    <div className="card">
-      <article className="card__article">
-        <div className="card__image-container">
+    <div className="card-total">
+      <article className="card-total__article">
+        <div className="card-total__image-container">
           <img
             src={producto.foto}
             alt={producto.nombre}
-            className="card__image"
+            className="card-total__image"
           />
         </div>
-        <div className="card__content">
-          <h2 className="card__heading">{producto.nombre}</h2>
-          <div className="card__description">
-            <p>
-              {producto.detalles}
+        <div className="card-total__content">
+          <h2 className="card-total__heading">{producto.nombre}</h2>
+          <div className="card-total__description">
+            <p className='text-center'>
+              $ {producto.precio}
             </p>
-            <button onClick={() => handleAgregar(producto)}>Agregar</button>
           </div>
         </div>
       </article>

@@ -7,12 +7,8 @@ const Formulario = () => {
     nombre: '',
     precio: '',
     stock: '',
-    marca: '',
-    categoria: '',
-    detalles: '',
-    foto: '',
-    envio: false,
-  }
+    foto: ''
+    }
 
   const [form, setForm] = useState(formInit)
 
