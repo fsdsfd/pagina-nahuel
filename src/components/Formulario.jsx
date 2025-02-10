@@ -6,8 +6,12 @@ const Formulario = () => {
     id: null,
     nombre: '',
     precio: '',
+    categoria: '',
+    detalles: '',
+    marca: '',
     stock: '',
-    foto: ''
+    foto: '',
+    envio: false
     }
 
   const [form, setForm] = useState(formInit)
@@ -113,10 +117,12 @@ const Formulario = () => {
         </div>
         <div>
           <label htmlFor="lbl-detalles">Detalles</label>
-          <input 
+          <textarea 
+          rows="30" cols="70"
             type="text" 
             name="detalles" 
-            id="lbl-detalles" 
+            id="lbl-detalles"
+            className="" 
             value={form.detalles} 
             onChange={handleChange} />
         </div>

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import './Card.scss'
 import CarritoContext from '../context/CarritoContext';
+import { Link } from 'react-router-dom';
 
 const Card = ( { producto } ) => {
 
@@ -13,7 +14,9 @@ const Card = ( { producto } ) => {
   }
 
   return (
-    <div className="card-total">
+
+          <Link  to={`/detalle-producto/${producto.id}`}>
+              <div className="card-total">
       <article className="card-total__article">
         <div className="card-total__image-container">
           <img
@@ -25,13 +28,15 @@ const Card = ( { producto } ) => {
         <div className="card-total__content">
           <h2 className="card-total__heading">{producto.nombre}</h2>
           <div className="card-total__description">
-            <p className='text-center'>
+            <p className='text-center card-total__precio'>
               $ {producto.precio}
             </p>
           </div>
-        </div>
+          </div>
       </article>
     </div>
+          </Link>
+
   );
 };
 

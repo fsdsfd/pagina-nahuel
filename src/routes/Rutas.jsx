@@ -9,6 +9,11 @@ import Cocinas from "../pages/Cocinas"
 import Anafes from "../pages/Anafes"
 import Freidoras from "../pages/Freidoras"
 import Hornos from "../pages/Hornos"
+import DetalleProductos from "../pages/DetalleProductos"
+import Cuidado from "../pages/Cuidado"
+import Terminos from "../pages/Terminos"
+import Preguntas from "../pages/Preguntas"
+import Garantia from "../pages/Garantia"
 
 const Rutas = () => {
 
@@ -50,6 +55,26 @@ const Rutas = () => {
                 path: '/hornos',
                 element: <Hornos />
             },
+            {
+                path: "/detalle-producto/:id",
+                element: <DetalleProductos />,
+              },
+              {
+                path: "/cuidado",
+                element: <Cuidado />,
+              },
+              {
+                path: "/garantia",
+                element: <Garantia />,
+              },
+              {
+                path: "/terminos",
+                element: <Terminos />,
+              },
+              {
+                path: "/q&a",
+                element: <Preguntas />,
+              },
             {
                 path: '*',
                 element: <NoEncontrado />
