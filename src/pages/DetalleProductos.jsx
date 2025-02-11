@@ -42,7 +42,7 @@ const DetalleProductos = () => {
  <main className="main-producto">
     <div className='detalles-producto-container'>
     <div className="image-container">
-            <img src={`/${producto.foto}`} alt={producto.nombre} className="image-container__image" />
+            <img src={`${producto.foto}`} alt={producto.nombre} className="image-container__image" />
         </div>
         <div className="container-producto">
             <h1 className="container-producto__titulo">{producto.nombre}</h1>

@@ -1,26 +1,44 @@
 import { useContext, useEffect, useState } from "react"
 import ProductosContext from "../context/ProductosContext"
+import DragDrop from "./DragDrop/DragDrop"
 const Formulario = () => {
+
+  /* Creamos 2 estados para gestionar el drag and drop */
+  const [foto, setFoto] = useState('')
+  const [srcImagen, setSrcImagen] = useState('')
+  const [foto2, setFoto2] = useState('')
+  const [srcImagen2, setSrcImagen2] = useState('')
+  const [foto3, setFoto3] = useState('')
+  const [srcImagen3, setSrcImagen3] = useState('')
 
   const formInit = {
     id: null,
     nombre: '',
     precio: '',
+    stock: '',
+    marca: '',
     categoria: '',
     detalles: '',
-    marca: '',
-    stock: '',
     foto: '',
-    envio: false
-    }
+    foto2: '',
+    foto3: '',
+    envio: false,
+  }
 
   const [form, setForm] = useState(formInit)
 
   const { crearProductoContext, actualizarProductoContext, productoAEditar, setProductoAEditar } = useContext(ProductosContext)
 
   useEffect(() => {
-    productoAEditar ? setForm(productoAEditar) : setForm(formInit)
-  }, [productoAEditar])
+    if (productoAEditar) {
+      setForm(productoAEditar)
+      setSrcImagen(productoAEditar.foto)
+    } else {
+      setForm(formInit)
+    }
+    
+    //productoAEditar ? setForm(productoAEditar) : setForm(formInit)
+  }, [productoAEditar, setProductoAEditar])
   
 
   const handleSubmit = async e => {
@@ -31,10 +49,12 @@ const Formulario = () => {
 
       if ( form.id === null ) {
         console.log('Creando un producto')
-        await crearProductoContext(form)
+        const productoNuevoConImagen = {...form, ...foto, ...foto2, ...foto3}
+        await crearProductoContext(productoNuevoConImagen)
       } else {
         console.log('Actualizando producto')
-        await actualizarProductoContext(form)
+        const productoEditadoConImagen = {...form, ...foto, ...foto2, ...foto3}
+        await actualizarProductoContext(productoEditadoConImagen)
       }
       handleReset()
       
@@ -61,6 +81,12 @@ const Formulario = () => {
   const handleReset = () => {
     console.log('handleReset')
     setForm(formInit)
+    setFoto('')
+    setSrcImagen('')
+    setFoto2('')
+    setSrcImagen2('')
+    setFoto3('')
+    setSrcImagen3('')
     setProductoAEditar(null)
   }
 
@@ -117,16 +143,14 @@ const Formulario = () => {
         </div>
         <div>
           <label htmlFor="lbl-detalles">Detalles</label>
-          <textarea 
-          rows="30" cols="70"
+          <input 
             type="text" 
             name="detalles" 
-            id="lbl-detalles"
-            className="" 
+            id="lbl-detalles" 
             value={form.detalles} 
             onChange={handleChange} />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="lbl-foto">Foto</label>
           <input 
             type="text" 
@@ -134,7 +158,12 @@ const Formulario = () => {
             id="lbl-foto" 
             value={form.foto} 
             onChange={handleChange} />
-        </div>
+        </div> */}
+
+        <DragDrop setFoto={setFoto} srcImagen={srcImagen} setSrcImagen={setSrcImagen} />
+        <DragDrop setFoto={setFoto2} srcImagen={srcImagen2} setSrcImagen={setSrcImagen2} />
+        <DragDrop setFoto={setFoto3} srcImagen={srcImagen3} setSrcImagen={setSrcImagen3} />
+
         <div>
           <label htmlFor="lbl-envio">Envío</label>
           <input 
