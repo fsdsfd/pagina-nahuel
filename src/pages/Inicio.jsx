@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import './Inicio.scss'
 import useTitulo from '../hooks/useTitulo'
@@ -8,7 +8,29 @@ import { Link } from 'react-router-dom'
 
 const Inicio = () => {
   const [hover, setHover] = useState(false);
-
+  const [isVisible, setIsVisible] = useState(false);
+    const textRef = useRef(null);
+  
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.3 } // Se activa cuando el 50% del texto es visible
+      );
+  
+      if (textRef.current) {
+        observer.observe(textRef.current);
+      }
+  
+      return () => {
+        if (textRef.current) {
+          observer.unobserve(textRef.current);
+        }
+      };
+    }, []);
   const { productos } = useContext(ProductosContext)
 
   //console.log(productos)
@@ -18,18 +40,26 @@ const Inicio = () => {
   return (
     <main className='main-inicio'>
             <div className='img-principal-container'>
-            <img src="/stock/fondo-pagina.gif" alt="" className='img-principal-container__img'/>
+            <img src="/stock/fondo-pagina.jpg" alt="" className='img-principal-container__img'/>
             <div className='img-principal-container__h1-container'>
+              <div className='titulo-container'>
+              <h1
+      ref={textRef}
+      className={`titulo-container__titulo ${isVisible ? 'visible' : ''}`}
+    >[Nombre de tu empresa]</h1>
+              </div>
+           
             <h1 className='img-principal-container__h1-container__h1'>Romper los límites de la excelencia es el alma de [Nombre de tu empresa], fusionando arte, tecnología e innovación para transformar cada experiencia.</h1>
             </div>
             </div>
-      <div >
+            <div >
       <div className='img-container'>
         <img src="/stock/fondo-cocina.jpg" alt="" className='img-container__img'/>
         <div className='img-container__div'>
         <img src="/stock/circles.png" alt="" className='img-container__div__circles'/>
-        <div>
-        <h1 className='img-container__div__h1'>Cocinas</h1>
+
+          <div>
+          <h1 className='img-container__div__h1'>Cocinas</h1>
         <Link to='/cocinas' className='img-container__div__link'>         
         <p className={`img-container__div__boton ${hover ? "negrita" : ""}`} 
           onMouseEnter={() => setHover(true)}
@@ -41,9 +71,10 @@ const Inicio = () => {
         className={`img-container__div__img ${hover ? "mostrar" : ""}`}
       />
         </Link>
-        </div>
-        <div className='img-container__div__p-container'> 
-        <p className='img-container__div__p-container__p'>Diseño eficaz. El trabajo de ingeniería nos permite incorporar un diseño interior que logra brindar un calor equilibrado y envolvente en toda la superficie. Estas cocinas son una verdadera obra de arte que lideran un mercado de calidad.
+          </div>
+    
+          <div className='img-container__div__p-container'> 
+        <p className='img-container__div__p-container__p'>Pensados para generar espacio y comodidad. Damos un paso al frente con la nueva gama de hornos y anafes caracterizados por ser una revolución a nivel de diseño e integración total en la cocina.
 </p>
 
         </div>

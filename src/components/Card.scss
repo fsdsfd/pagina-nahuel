@@ -39,26 +39,22 @@
 
     /* ----------------------------------------- */
 
-    @media (max-width: 768px) {
-        & { /* .card */
-            min-width: 400px;
-            max-width: 500px;
-            height: 200px;
-        }
+    @media (max-width: 576px) {
+        &{
+            width: 150px;
+            max-width: 300px;
+            height: 350px;  
 
-        &__article { /* .card__article */
-            display: flex;
         }
-
-        & &__image-container { /* .card .card__image-container */
-            width: 40%;
+        &__precio{
+            position: relative;
+            bottom: -2rem;
         }
-
-        &:hover &__image-container,
-        &:focus &__image-container {
-            width: 40%;
-        }
-
+       &__heading{
+        margin-left: .5rem;
+        text-decoration: underline 2px solid white;
+        
+       }
     }
 
 }

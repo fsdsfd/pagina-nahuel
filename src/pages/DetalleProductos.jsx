@@ -49,7 +49,7 @@ const DetalleProductos = () => {
             <p className="container-producto__precio">${producto.precio}</p>
             <hr className='container-producto__hr'/>
             <div className="container-producto__container-boton">
-                <a href={`https://wa.me/5491138532121?text=¡Hola!%20Estoy%20interesado%20en%20un%20producto:%20${producto.nombre}."`}>
+                <a href={`https://wa.me/5493413820429?text=¡Hola!%20Estoy%20interesado%20en%20un%20producto:%20${producto.nombre}."`}>
                 <button className="container-producto__boton">CONSULTAR</button> 
   
                 </a>

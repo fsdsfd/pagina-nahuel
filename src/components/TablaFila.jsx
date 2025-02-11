@@ -25,6 +25,7 @@ const TablaFila = ( { producto }) => {
       <td>
         <img className="img-row" src={producto.foto} alt={producto.nombre} />
       </td>
+      
       <td>{producto.envio ? 'SI' : 'NO'}</td>
       <td>
         <button onClick={() => handleEditar(producto)}>Editar</button>

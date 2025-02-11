@@ -5,7 +5,9 @@ const Nosotros = () => {
   useTitulo('Nosotros')
 
   return (
-    <div>Nosotros</div>
+    <div>
+      
+    </div>
   )
 }
 

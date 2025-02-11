@@ -19,6 +19,7 @@ const Tabla = () => {
           <th>Categoría</th>
           <th>Detalles</th>
           <th>Foto</th>
+          
           <th>Envío</th>
           <th>Acciones</th>
         </tr>

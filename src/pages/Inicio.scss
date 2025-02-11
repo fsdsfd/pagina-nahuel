@@ -2,6 +2,31 @@
     background-color: #010101;
     font-family: "Exo", serif;
 }
+.titulo-container{
+    width: 100%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30rem;
+
+    &__titulo{
+        transform: translateY(50px);
+        opacity: 0;
+        font-weight: 100;
+
+        transition: transform 2s ease, opacity 2s ease, font-weight 2s ease;
+
+        &.visible{
+            transform: translateX(0);
+            opacity: 1;
+            font-weight: 500;
+
+            color: white;
+        }
+    }
+    
+}
 .img-principal-container{
     background-color: #010101;
     display: flex;
@@ -123,4 +148,139 @@
     gap: 2rem;
     padding-bottom: 2rem;
 
+}
+@media (max-width:576px){
+    .main-inicio{
+        background-color: #010101;
+        font-family: "Exo", serif;
+    }
+    .img-principal-container{
+        background-color: #010101;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__img{
+            width: 100%;
+            height: 30rem;
+            position: relative;
+            bottom: 5rem;
+            z-index: 0;
+            object-fit: cover;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        }
+        &__h1-container{
+            width: 100%;
+            display: flex;
+                    &__h1{
+                color: white;
+                font-size: 1.2rem;
+                font-style: italic;
+                font-weight: 200;
+                text-align: center;
+                position: relative;
+                width: 100%;
+                padding: 3rem;
+            }
+        }
+    }
+    .img-container{
+        background-color: #010101;
+        
+        &__img{
+            width: 100%;
+            height: 15rem;
+            object-fit: cover;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        }
+        &__div{
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 95%;
+            font-family: "Exo", serif;
+            border-top: white 5px solid;
+            border-bottom: white 5px solid;
+            font-weight: 400;
+            border-left: 2px solid white;
+            border-right: 2px solid white;
+            padding: 1rem;
+            margin-left: .5rem;
+            &__circles{
+                height: 4.5rem;
+                display: none;
+            }
+            &__h1{
+                font-weight: 300;
+                margin-bottom: 0;
+            }
+            &__link{
+                display: flex;
+                width: 10rem;
+                height: 2.5rem;
+            }
+            &__boton{
+                color: #E25926;
+                text-decoration: underline 2px #010101;
+                width: 10rem;
+                font-size: .9rem;
+                font-weight: 500;
+                margin-left: .1rem;
+                transition: font-weight 0.5s ease-in-out;
+                &.negrita {
+                    font-weight: 900; /* Se vuelve más grueso */
+                  }
+            }
+            &__img{
+                width: 1.5rem;
+                opacity: 0;
+                transform: translateX(-20px); /* Comienza fuera de la pantalla */
+                transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+                position: relative;
+                right: 4rem; /* Ajusta según el diseño */
+                bottom: .6rem;
+                &.mostrar {
+                    opacity: 1;
+                    transform: translateX(0); /* Aparece a la derecha */
+                  }
+            }
+            &__p-container{
+                width: 100%;
+                height: 10rem;
+                text-align: start;
+                &__p{
+                    margin-top: .5rem;
+                    font-size: .9rem;
+                    margin-left: 0;
+                } 
+            }
+        }
+    }
+    .section-cards {
+        background-color: #f1f2f3;
+    
+        &__header{
+            &__h1{
+                margin-bottom: 3rem;
+                padding-top: 2rem;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                width: 15rem;
+                position: relative;
+                right: 5rem;
+            }
+        }
+    }
+    
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      
+        gap: 2rem;
+        padding-bottom: 2rem;
+        
+    }
 }
