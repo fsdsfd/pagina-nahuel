@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import ProductosContext from "../context/ProductosContext"
 import DragDrop from "./DragDrop/DragDrop"
+import { formularioSuccess } from "./FormularioSuccess"
 const Formulario = () => {
 
   /* Creamos 2 estados para gestionar el drag and drop */
-  const [foto, setFoto] = useState('')
-  const [srcImagen, setSrcImagen] = useState('')
-  const [foto2, setFoto2] = useState('')
-  const [srcImagen2, setSrcImagen2] = useState('')
-  const [foto3, setFoto3] = useState('')
-  const [srcImagen3, setSrcImagen3] = useState('')
+  const [foto, setFoto] = useState([])
+  const [srcImagen, setSrcImagen] = useState([])
+
 
   const formInit = {
     id: null,
@@ -19,9 +17,7 @@ const Formulario = () => {
     marca: '',
     categoria: '',
     detalles: '',
-    foto: '',
-    foto2: '',
-    foto3: '',
+    foto: [],
     envio: false,
   }
 
@@ -42,27 +38,27 @@ const Formulario = () => {
   
 
   const handleSubmit = async e => {
-    e.preventDefault()
-    console.log('handleSubmit')
-
+    e.preventDefault();
+    console.log('handleSubmit');
+    console.log("Valor de categoría antes de enviar:", form.categoria);
     try {
+        const productoConImagenes = { ...form, foto }; // Agregar imágenes
 
-      if ( form.id === null ) {
-        console.log('Creando un producto')
-        const productoNuevoConImagen = {...form, ...foto, ...foto2, ...foto3}
-        await crearProductoContext(productoNuevoConImagen)
-      } else {
-        console.log('Actualizando producto')
-        const productoEditadoConImagen = {...form, ...foto, ...foto2, ...foto3}
-        await actualizarProductoContext(productoEditadoConImagen)
-      }
-      handleReset()
-      
+        if (form.id === null) {
+            console.log('Creando un producto');
+            formularioSuccess('creado')
+            await crearProductoContext(productoConImagenes);
+        } else {
+            console.log('Actualizando producto');
+            formularioSuccess('actualizado')
+            await actualizarProductoContext(productoConImagenes);
+        }
+
+        handleReset();
     } catch (error) {
-      console.error('[handleSubmit]', error)
+        console.error('[handleSubmit]', error);
     }
-
-  }
+};
 
   const handleChange = e => {
     //console.log(e.target.name)
@@ -70,6 +66,7 @@ const Formulario = () => {
     //console.log(e.target.checked)
     //console.log(e.target.type)
     const { type, name, checked, value } = e.target
+  console.log("Actualizando", name, "a", value);  // Este log te ayudará a ver qué está pasando
 
     setForm({
       ...form,
@@ -81,12 +78,8 @@ const Formulario = () => {
   const handleReset = () => {
     console.log('handleReset')
     setForm(formInit)
-    setFoto('')
-    setSrcImagen('')
-    setFoto2('')
-    setSrcImagen2('')
-    setFoto3('')
-    setSrcImagen3('')
+    setFoto([])
+    setSrcImagen([])
     setProductoAEditar(null)
   }
 
@@ -114,7 +107,7 @@ const Formulario = () => {
             value={form.precio} 
             onChange={handleChange} />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="lbl-stock">Stock</label>
           <input 
             type="text" 
@@ -122,8 +115,8 @@ const Formulario = () => {
             id="lbl-stock" 
             value={form.stock} 
             onChange={handleChange} />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <label htmlFor="lbl-marca">Marca</label>
           <input 
             type="text" 
@@ -131,40 +124,50 @@ const Formulario = () => {
             id="lbl-marca" 
             value={form.marca} 
             onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="lbl-categoria">Categoría</label>
-          <input 
-            type="text" 
-            name="categoria" 
-            id="lbl-categoria" 
-            value={form.categoria} 
-            onChange={handleChange} />
-        </div>
+        </div> */}
+<div> 
+  <label htmlFor="lbl-categoria">Categoría</label>
+  <select 
+    name="categoria" 
+    id="lbl-categoria" 
+    value={form.categoria} 
+    onChange={handleChange}>
+    <option value="">Selecciona una categoría</option> 
+    <option value="cocinas">Cocinas</option>
+    <option value="hornos">Hornos</option>
+    <option value="anafes">Anafes</option>
+    <option value="freidoras">Freidoras</option>
+    {/* Agrega más opciones según lo necesites */}
+  </select>
+</div>
         <div>
           <label htmlFor="lbl-detalles">Detalles</label>
-          <input 
+          <textarea
             type="text" 
             name="detalles" 
             id="lbl-detalles" 
+            cols={30}
+            rows={5}
             value={form.detalles} 
             onChange={handleChange} />
         </div>
-        {/* <div>
+         {/* <div>
           <label htmlFor="lbl-foto">Foto</label>
           <input 
-            type="text" 
+            type="file" 
             name="foto" 
             id="lbl-foto" 
             value={form.foto} 
+            multiple='multiple'
             onChange={handleChange} />
-        </div> */}
+        </div>  */}
 
         <DragDrop setFoto={setFoto} srcImagen={srcImagen} setSrcImagen={setSrcImagen} />
-        <DragDrop setFoto={setFoto2} srcImagen={srcImagen2} setSrcImagen={setSrcImagen2} />
-        <DragDrop setFoto={setFoto3} srcImagen={srcImagen3} setSrcImagen={setSrcImagen3} />
+        
+        {/* <DragDrop setFoto={setFoto2} srcImagen={srcImagen2} setSrcImagen={setSrcImagen2} />
+        <DragDrop setFoto={setFoto3} srcImagen={srcImagen3} setSrcImagen={setSrcImagen3} /> */}
 
-        <div>
+        {/* <div>
           <label htmlFor="lbl-envio">Envío</label>
           <input 
             type="checkbox" 
@@ -172,7 +175,7 @@ const Formulario = () => {
             id="lbl-envio" 
             checked={form.envio} 
             onChange={handleChange} />
-        </div>
+        </div> */}
 
         <button type="submit">Guardar</button>
         <button type="reset" onClick={handleReset}>Limpiar</button>

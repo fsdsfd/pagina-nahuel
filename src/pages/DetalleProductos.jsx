@@ -28,6 +28,8 @@ const DetalleProductos = () => {
             const data = await res.json()
             console.log(data)
             setProducto(data)
+            console.log(data.foto)
+
         } catch (error) {
             console.log('getOneProducto', error)
         }
@@ -42,8 +44,33 @@ const DetalleProductos = () => {
  <main className="main-producto">
     <div className='detalles-producto-container'>
     <div className="image-container">
-            <img src={`${producto.foto}`} alt={producto.nombre} className="image-container__image" />
-        </div>
+    <div id="carouselExampleIndicators" className="carousel carousel-fade carousel-dark slide">
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" className='boton1'></button>
+  </div>
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img src={`${producto.foto[0]}`} className=" image-container__image" alt="..." />
+    </div>
+    <div className="carousel-item">
+      <img src={`${producto.foto[1]}`} className=" image-container__image" alt="..." />
+    </div>
+    <div className="carousel-item">
+      <img src={`${producto.foto[2]}`} className="image-container__image" alt="..." />
+    </div>
+    
+  </div>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
+  </button>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
+  </button>
+</div>        </div>
         <div className="container-producto">
             <h1 className="container-producto__titulo">{producto.nombre}</h1>
             <p className="container-producto__precio">${producto.precio}</p>

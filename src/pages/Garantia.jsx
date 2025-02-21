@@ -1,8 +1,10 @@
 import React from 'react'
-
+import './Garantia.scss'
 const Garantia = () => {
   return (
-    <div>Garantia</div>
+    <div>
+      <h1 className='garantia__h1'>Garantía</h1>
+    </div>
   )
 }
 

@@ -20,7 +20,7 @@ const Card = ( { producto } ) => {
       <article className="card-total__article">
         <div className="card-total__image-container">
           <img
-            src={producto.foto}
+            src={producto.foto[0]}
             alt={producto.nombre}
             className="card-total__image"
           />
