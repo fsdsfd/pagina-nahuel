@@ -1,0 +1,26 @@
+.h1{
+    font-size: .9rem;
+    font-weight: 500;
+
+
+}
+.h1-principal{
+    font-size: 2rem;
+    margin-top: 5rem;
+    color: #E25926;
+    font-family: "Exo", serif;
+    margin-bottom: 3rem;
+}
+.li{
+    margin-bottom: 2rem;
+}
+.container-terminos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__inner{
+        width: 70%;
+        font-size: .9rem;
+        margin-bottom: 5rem;
+    }
+}

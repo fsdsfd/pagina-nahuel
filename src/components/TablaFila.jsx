@@ -21,14 +21,11 @@ const TablaFila = ( { producto }) => {
     <tr>
       <td>{producto.nombre}</td>
       <td>{producto.precio}</td>
-      <td>{producto.stock}</td>
-      <td>{producto.marca}</td>
       <td>{producto.categoria}</td>
       <td>{producto.detalles}</td>
       <td>
       <img className="img-row" src={producto.foto[0]} alt={producto.nombre} />
       </td>
-      <td>{producto.envio ? 'SI' : 'NO'}</td>
       <td>
         <button onClick={() => handleEditar(producto)}>Editar</button>
         <button className="boton-alta boton-alta__eliminar" onClick={handleEliminar}>Eliminar</button>

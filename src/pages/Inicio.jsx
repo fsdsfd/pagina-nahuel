@@ -46,10 +46,10 @@ const Inicio = () => {
               <h1
       ref={textRef}
       className={`titulo-container__titulo ${isVisible ? 'visible' : ''}`}
-    >[Nombre de tu empresa]</h1>
+    >Famigas</h1>
               </div>
            
-            <h1 className='img-principal-container__h1-container__h1'>Romper los límites de la excelencia es el alma de [Nombre de tu empresa], fusionando arte, tecnología e innovación para transformar cada experiencia.</h1>
+            <h1 className='img-principal-container__h1-container__h1'>Romper los límites de la excelencia es el alma de Famigas, fusionando arte, tecnología e innovación para transformar cada experiencia.</h1>
             </div>
             </div>
             <div >
@@ -60,7 +60,7 @@ const Inicio = () => {
 
           <div>
           <h1 className='img-container__div__h1'>Cocinas</h1>
-        <Link to='/cocinas' className='img-container__div__link'>         
+        <Link to='/cocinas' className='img-container__div__link' onClick={() => window.scrollTo(0, 0)}>         
         <p className={`img-container__div__boton ${hover ? "negrita" : ""}`} 
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -92,7 +92,7 @@ const Inicio = () => {
 
           <div>
           <h1 className='img-container__div__h1'>Hornos</h1>
-        <Link to='/hornos' className='img-container__div__link'>         
+        <Link to='/hornos' className='img-container__div__link' onClick={() => window.scrollTo(0, 0)}>         
         <p className={`img-container__div__boton ${hover ? "negrita" : ""}`} 
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -124,7 +124,7 @@ const Inicio = () => {
 
           <div>
           <h1 className='img-container__div__h1'>Freidoras</h1>
-        <Link to='/freidoras' className='img-container__div__link'>         
+        <Link to='/freidoras' className='img-container__div__link' onClick={() => window.scrollTo(0, 0)}>         
         <p className={`img-container__div__boton ${hover ? "negrita" : ""}`} 
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -155,7 +155,7 @@ const Inicio = () => {
 
        <div>
        <h1 className='img-container__div__h1'>Anafes</h1>
-        <Link to='/anafes' className='img-container__div__link'>         
+        <Link to='/anafes' className='img-container__div__link' onClick={() => window.scrollTo(0, 0)}>         
         <p className={`img-container__div__boton ${hover ? "negrita" : ""}`} 
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}

@@ -44,33 +44,41 @@ const DetalleProductos = () => {
  <main className="main-producto">
     <div className='detalles-producto-container'>
     <div className="image-container">
-    <div id="carouselExampleIndicators" className="carousel carousel-fade carousel-dark slide">
+    <div id="carouselExampleIndicators" className="carousel carousel-fade carousel-dark slide carousel-custom">
+  {/* Indicadores dinámicos */}
   <div className="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" className='boton1'></button>
+    {producto.foto.map((_, index) => (
+      <button
+        key={index}
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to={index}
+        className={index === 0 ? "active" : ""}
+        aria-current={index === 0 ? "true" : ""}
+        aria-label={`Slide ${index + 1}`}
+      ></button>
+    ))}
   </div>
+
+  {/* Slides dinámicos */}
   <div className="carousel-inner">
-    <div className="carousel-item active">
-      <img src={`${producto.foto[0]}`} className=" image-container__image" alt="..." />
-    </div>
-    <div className="carousel-item">
-      <img src={`${producto.foto[1]}`} className=" image-container__image" alt="..." />
-    </div>
-    <div className="carousel-item">
-      <img src={`${producto.foto[2]}`} className="image-container__image" alt="..." />
-    </div>
-    
+    {producto.foto.map((imagen, index) => (
+      <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
+        <img src={imagen} className="image-container__image" alt={`Imagen ${index + 1}`} />
+      </div>
+    ))}
   </div>
+
+  {/* Controles de navegación */}
   <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
     <span className="visually-hidden">Previous</span>
   </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+  <button className="carousel-control-next boton1" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span className="carousel-control-next-icon boton1" aria-hidden="true"></span>
     <span className="visually-hidden">Next</span>
   </button>
-</div>        </div>
+</div>      </div>
         <div className="container-producto">
             <h1 className="container-producto__titulo">{producto.nombre}</h1>
             <p className="container-producto__precio">${producto.precio}</p>

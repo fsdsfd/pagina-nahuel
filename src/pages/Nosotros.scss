@@ -1,0 +1,94 @@
+.nosotros{
+    background-color: #010101;
+    font-family: "Exo", serif;
+    color: white;
+}
+.h1-container{
+    text-align: center;
+    padding-top: 2rem;
+    &__h1{
+        font-weight: 300;
+        margin-bottom: 3rem;
+        text-decoration: underline 2px #E25926;
+        text-underline-offset: 5px;
+    }
+}
+.p-container{
+    width: 90%;
+    margin-left: 3rem;
+    display: flex;
+    margin-top: 3rem;
+    &__p-princ{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    &__img1{
+        width: 20rem;
+        height: 20rem;
+    }
+    &__img2{
+        width: 20rem;
+        height: 20rem;
+    }
+    &__img-mobile{
+        display: none;
+        width: 20rem;
+        height: 20rem;
+    }
+    &__p-end{
+        text-align: end;
+        margin-left: 3rem;
+    }
+
+}
+.p-container-frase{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5rem;
+    &__p-italic{
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 400;
+        text-align: center;
+        text-decoration: underline 1px solid #E25926;
+        text-underline-offset: 4px;
+    }
+}
+@media (max-width:576px){
+    .p-container{
+        width: 90%;
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 3rem;
+        &__p{
+
+        }
+        
+        &__p-princ{
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        &__img-mobile{
+            width: 22.7rem;
+            height: 20rem;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        &__img1{
+            display: none;
+        }
+        &__img2{
+            width: 22.7rem;
+            height: 20rem;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        &__p-end{
+            text-align: start;
+        }
+    }
+}
