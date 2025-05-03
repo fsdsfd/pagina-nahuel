@@ -19,11 +19,11 @@ const Card = ( { producto } ) => {
               <div className="card-total">
       <article className="card-total__article">
         <div className="card-total__image-container">
-          <img
-            src={producto.foto[0]}
-            alt={producto.nombre}
-            className="card-total__image"
-          />
+        <img
+  src={Array.isArray(producto.foto) && producto.foto.length > 0 ? producto.foto[0] : 'https://via.placeholder.com/150'}
+  alt={producto.nombre || 'Producto sin nombre'}
+  className="card-total__image"
+/>
         </div>
         <div className="card-total__content">
           <h2 className="card-total__heading">{producto.nombre}</h2>
