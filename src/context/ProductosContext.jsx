@@ -19,7 +19,7 @@ const ProductosProvider = ( { children} ) => {
         try {
 
             const prods = await helperPeticionesHttp(url, {})
-
+            console.log('Productos recibidos:', prods);
             // console.log(prods)
             setProductos(prods)
             
@@ -29,28 +29,24 @@ const ProductosProvider = ( { children} ) => {
     }
 
     const crearProductoContext = async (nuevoProducto) => {
-
         try {
-            // console.log(nuevoProducto)
-
             const options = {
                 method: 'POST',
                 headers: { 'content-type' : 'application/json' },
                 body: JSON.stringify(nuevoProducto)
             }
-
-            const newProducto = await helperPeticionesHttp(url, options)
-
-            console.log(newProducto)
-
-            setProductos([...productos, newProducto])
-            
+            const newProducto = await helperPeticionesHttp(url, options);
+            console.log("Producto creado:", newProducto);
+            // Verifica que newProducto existe y tiene una propiedad identificadora, p.ej. id
+            if (newProducto && newProducto.id) {
+                setProductos([...productos, newProducto]);
+            } else {
+                console.error("El producto creado no tiene la estructura correcta:", newProducto);
+            }
         } catch (error) {
-            console.error('[crearProductoContext]', error)
+            console.error('[crearProductoContext]', error);
         }
-
     }
-
     const actualizarProductoContext = async (productoEditado) => {
         // console.log(productoEditado)
         try {

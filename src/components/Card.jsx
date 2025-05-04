@@ -20,7 +20,7 @@ const Card = ( { producto } ) => {
       <article className="card-total__article">
         <div className="card-total__image-container">
         <img
-  src={Array.isArray(producto.foto) && producto.foto.length > 0 ? producto.foto[0] : 'http://localhost:8080/uploads/b16c0a78-2de2-416c-982b-6e6632b6ba9b.png'}
+  src={Array.isArray(producto.foto) && producto.foto.length > 0 ? producto.foto[0] : 'https://via.placeholder.com/150'}
   alt={producto.nombre || 'Producto sin nombre'}
   className="card-total__image"
 />

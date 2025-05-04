@@ -23,12 +23,15 @@ const Tabla = () => {
       </thead>
       <tbody>
 
-        {
-          productos && productos.map( (producto, idx) => (
-            <TablaFila key={producto.id+idx} producto={producto} />
-          ))
-
-        }
+      {
+  productos && productos.map((producto, idx) => {
+    if (!producto) {
+      console.warn('Producto indefinido en la lista', idx);
+      return null;
+    }
+    return <TablaFila key={producto.id + idx} producto={producto} />;
+  })
+}
 
       </tbody>
 
