@@ -12,7 +12,7 @@ const Alta = () => {
 
   const handleLogin = async () => {
     const password = prompt("Ingresa la contraseña:");
-    const response = await fetch("https://famigas.netlify.app/login", {
+    const response = await fetch("https://pagina-nahuel-backend-1.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password }),
