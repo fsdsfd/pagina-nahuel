@@ -12,7 +12,6 @@ const Card = ( { producto } ) => {
     console.log('Agregando el producto al carrito...')
     agregarProductoAlCarritoContext(producto)
   }
-  console.log("Foto del producto:", producto.foto);
   return (
 
           <Link  to={`/detalle-producto/${producto.id}`}>

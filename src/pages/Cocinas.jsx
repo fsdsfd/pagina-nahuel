@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import './Cocinas.scss'
 import useTitulo from '../hooks/useTitulo'
@@ -8,9 +8,27 @@ import { useParams } from 'react-router'
 
 const Cocinas = () => {
 
-  const { productos } = useContext(ProductosContext)
+  // const { productos } = useContext(ProductosContext)
   //console.log(productos)
+  const [productos, setProductos] = useState(null)
 
+  useEffect(() => {
+    const url = import.meta.env.VITE_BACKEND_PRODUCTOS
+    const getAllProductos = async () => {
+
+        try {
+
+            const prods = await helperPeticionesHttp(url, {})
+            console.log('Productos recibidos:', prods);
+            // console.log(prods)
+            setProductos(prods)
+            
+        } catch (error) {
+            console.error('[getAllProductos]', error)
+        }
+    }
+    getAllProductos()
+  })
   useTitulo('Cocinas')
   const productosFiltrados = (productos || []).filter(
     (p) => p.categoria === "cocinas"
