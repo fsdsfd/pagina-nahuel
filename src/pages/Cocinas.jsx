@@ -5,6 +5,7 @@ import useTitulo from '../hooks/useTitulo'
 import Card from '../components/Card'
 import ProductosContext from '../context/ProductosContext'
 import { useParams } from 'react-router'
+import { helperPeticionesHttp } from '../helpers/helper-peticiones-http'
 
 const Cocinas = () => {
 
